@@ -75,7 +75,7 @@ https://jsonplaceholder.typicode.com/todos
 ]
 </pre>
 
-# ソースコードの説明
+# ソースコード
 ## Generic API
 <pre>
 extension URLSession {

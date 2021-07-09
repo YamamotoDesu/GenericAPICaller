@@ -55,7 +55,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             switch result {
             case .success(let users):
                 DispatchQueue.main.async {
-                    print("*****DispatchQueue.main.async** count\(users.count)")
                     self?.models = users
                     self?.table.reloadData()
                 }

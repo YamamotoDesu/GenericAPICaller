@@ -67,3 +67,98 @@ https://jsonplaceholder.typicode.com/todos
   }
 ]
 </pre>
+
+# ソースコードの説明
+## Generic API
+<pre>
+extension URLSession {
+    enum CustomError: Error {
+        case invalidUrl
+        case invalidData
+    }
+    
+    func request<T: Codable>(
+        url:URL?,
+        expecting: T.Type,
+        completion: @escaping (Result<T, Error>) -> Void
+    ) {
+        guard let url = url else {
+            completion(.failure(CustomError.invalidUrl))
+            return
+        }
+        
+        let task = dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(CustomError.invalidData))
+                }
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(expecting, from: data)
+                completion(.success(result))
+            }
+            catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+}
+
+</pre>
+
+## Models
+<pre>
+struct User: Codable {
+    let name: String
+    let email: String
+}
+
+struct ToDoListItem: Codable {
+    let title: String
+    let completed: Bool
+}
+</pre>
+
+## Call API
+    // User
+    func fetch() {
+        URLSession.shared.request(
+            url: Constants.usersUrl,
+            expecting: [User].self
+        ) { [weak self] result in
+            switch result {
+            case .success(let users):
+                DispatchQueue.main.async {
+                    self?.models = users
+                    self?.table.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // ToDoList
+    func fetchItems() {
+        URLSession.shared.request(
+            url: Constants.todolistUrl,
+            expecting: [ToDoListItem].self
+        ) { [weak self] result in
+            switch result {
+            case .success(let items):
+                DispatchQueue.main.async {
+                    self?.models = items
+                    self?.table.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+</pre>
+

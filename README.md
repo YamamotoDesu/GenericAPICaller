@@ -5,6 +5,10 @@ https://youtu.be/Ot_fk9LZxEk
 - Xcode Version 12.4 (12D4e)
 - Swift 5、Swift
 
+# 完成イメージ
+![Simulator Screen Shot - iPhone 12 - 2021-07-10 at 00 46 25](https://user-images.githubusercontent.com/47273077/125104468-5ff09880-e118-11eb-8255-fdc8aaff6b82.png)
+
+
 # Free fake API for testing 
 https://jsonplaceholder.typicode.com/users
 <pre>

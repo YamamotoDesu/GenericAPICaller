@@ -6,8 +6,11 @@ https://youtu.be/Ot_fk9LZxEk
 - Swift 5、Swift
 
 # 完成イメージ
-![Simulator Screen Shot - iPhone 12 - 2021-07-10 at 00 46 25](https://user-images.githubusercontent.com/47273077/125104468-5ff09880-e118-11eb-8255-fdc8aaff6b82.png)
+## Users
+<img src="https://user-images.githubusercontent.com/47273077/125104468-5ff09880-e118-11eb-8255-fdc8aaff6b82.png" width="200">
 
+## ToDoList
+<img src="https://user-images.githubusercontent.com/47273077/125104937-e1482b00-e118-11eb-8467-2a308b779c85.png" width="200">
 
 # Free fake API for testing 
 https://jsonplaceholder.typicode.com/users

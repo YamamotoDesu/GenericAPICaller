@@ -51,7 +51,7 @@ https://jsonplaceholder.typicode.com/users
 ]
 </pre>
 https://jsonplaceholder.typicode.com/todos
-<pre>
+```swift
 [
   {
     "userId": 1,
@@ -73,11 +73,11 @@ https://jsonplaceholder.typicode.com/todos
     "completed": false
   }
 ]
-</pre>
+```
 
 # ソースコード
 ## Generic API
-<pre>
+```swift
 extension URLSession {
     enum CustomError: Error {
         case invalidUrl
@@ -116,10 +116,10 @@ extension URLSession {
     }
 }
 
-</pre>
+```
 
 ## Models
-<pre>
+```swift
 struct User: Codable {
     let name: String
     let email: String
@@ -129,9 +129,10 @@ struct ToDoListItem: Codable {
     let title: String
     let completed: Bool
 }
-</pre>
+```
 
 ## Call API
+```swift
     // User
     func fetch() {
         URLSession.shared.request(
@@ -167,5 +168,5 @@ struct ToDoListItem: Codable {
             }
         }
     }
-</pre>
+```
 
